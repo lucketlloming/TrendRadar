@@ -26,7 +26,8 @@ services:
       # Crawler settings
       # Reduced interval to 1 hour; default 30min was too noisy for my use
       - CRAWLER_INTERVAL=${CRAWLER_INTERVAL:-3600}
-      - MAX_TRENDS=${MAX_TRENDS:-20}
+      # Lowered from 20 to 10 — I only care about the top trends
+      - MAX_TRENDS=${MAX_TRENDS:-10}
     volumes:
       - ./data:/app/data
       - ./config:/app/config
