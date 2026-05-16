@@ -36,6 +36,9 @@ services:
       - trendradar-net
     depends_on:
       - redis
+    # Limit memory usage — this was ballooning on my home server
+    mem_limit: 512m
+    memswap_limit: 512m
 
   redis:
     image: redis:7-alpine
