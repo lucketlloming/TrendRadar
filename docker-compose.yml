@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     environment:
       # Application settings
-      - TZ=${TZ:-America/New_York}
+      - TZ=${TZ:-America/Chicago}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
       # AI provider configuration
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
@@ -24,7 +24,8 @@ services:
       - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL:-}
       - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL:-}
       # Crawler settings
-      - CRAWLER_INTERVAL=${CRAWLER_INTERVAL:-1800}
+      # Reduced interval to 1 hour; default 30min was too noisy for my use
+      - CRAWLER_INTERVAL=${CRAWLER_INTERVAL:-3600}
       - MAX_TRENDS=${MAX_TRENDS:-20}
     volumes:
       - ./data:/app/data
