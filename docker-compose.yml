@@ -48,7 +48,8 @@ services:
       - redis-data:/data
     networks:
       - trendradar-net
-    command: redis-server --appendonly yes
+    # Added maxmemory cap to prevent redis from eating too much RAM on my Pi
+    command: redis-server --appendonly yes --maxmemory 128mb --maxmemory-policy allkeys-lru
 
   # Optional: Ollama for local LLM support
   ollama:
